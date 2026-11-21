@@ -1,0 +1,346 @@
+{
+  "benchmark_version": "refund-agent-v1.0",
+  "split": "development",
+  "model": "qwen3:4b",
+  "adapter_settings": {
+    "adapter": "openai-compatible-chat-completions",
+    "model_revision": "359d7dd4bcda",
+    "endpoint_scope": "loopback",
+    "max_tokens": 500,
+    "max_retries": 0,
+    "timeout_seconds": 30,
+    "response_format": "prompt-only JSON",
+    "prompt_differences": "none"
+  },
+  "agent_configuration_sha256": "39283efb3c37270cecb6484a5c8eb4d6ef275dc92957f9976722d5f7dcb32a43",
+  "mock": false,
+  "cases": [
+    {
+      "case": "dup_cad_29",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=654, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object.",
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 15569.6,
+      "model_calls": 1,
+      "input_tokens": 339,
+      "output_tokens": 410,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=654, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "dup_cad_small",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=344, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object.",
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 8867.9,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=344, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "dup_usd",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=343, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object.",
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 8674.0,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=343, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "dup_cad_large",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=342, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object.",
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 8810.7,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=342, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "dup_eur",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=655, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object.",
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 14011.2,
+      "model_calls": 1,
+      "input_tokens": 340,
+      "output_tokens": 316,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=655, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "different_invoices_cad",
+      "family": "separate_invoices",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=344, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 7795.1,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=344, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "different_invoices_usd",
+      "family": "separate_invoices",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=343, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 8132.5,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=343, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "failed_then_success",
+      "family": "failed_retry",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=655, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 15732.4,
+      "model_calls": 1,
+      "input_tokens": 345,
+      "output_tokens": 476,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=655, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "already_refunded_cad",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=345, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 7868.5,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=345, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "already_refunded_usd",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=340, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 7683.0,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=340, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "already_refunded_eur",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=340, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 7681.5,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=340, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "already_refunded_large",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=343, completion_tokens=500, has_text=False, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 8315.0,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=500, prompt_tokens=343, completion_tokens=500, has_text=False, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    }
+  ],
+  "passed": 0,
+  "total": 12
+}

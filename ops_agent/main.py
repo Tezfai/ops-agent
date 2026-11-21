@@ -5,7 +5,7 @@ from datetime import datetime
 
 from fastapi import Depends, FastAPI, HTTPException, Request, status
 from pydantic import BaseModel, ConfigDict
-from sqlalchemy import select
+from sqlalchemy import exists, select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -25,6 +25,7 @@ class PaymentOut(BaseModel):
     payment_method: str
     status: str
     captured_at: datetime
+    refunded: bool
 
 
 class ProposalCreate(BaseModel):
@@ -36,6 +37,18 @@ class ProposalOut(BaseModel):
     id: uuid.UUID
     payment_id: uuid.UUID
     status: str
+    amount_cents: int
+    currency: str
+
+
+def proposal_output(proposal: RefundProposal, payment: Payment) -> dict:
+    return {
+        "id": proposal.id,
+        "payment_id": proposal.payment_id,
+        "status": proposal.status,
+        "amount_cents": payment.amount_cents,
+        "currency": payment.currency,
+    }
 
 
 class RefundOut(BaseModel):
@@ -98,16 +111,25 @@ def is_duplicate(session: Session, payment: Payment) -> bool:
 
 @app.get("/payments", response_model=list[PaymentOut])
 def list_payments(session: Session = Depends(get_session)):
-    return session.scalars(customer_payment_query().order_by(Payment.captured_at, Payment.id)).all()
+    refunded = exists(select(Refund.id).where(Refund.payment_id == Payment.id)).label("refunded")
+    rows = session.execute(customer_payment_query().add_columns(refunded)
+                           .order_by(Payment.captured_at, Payment.id)).all()
+    return [
+        {"id": payment.id, "invoice_id": payment.invoice_id, "amount_cents": payment.amount_cents,
+         "currency": payment.currency, "payment_method": payment.payment_method, "status": payment.status,
+         "captured_at": payment.captured_at, "refunded": is_refunded}
+        for payment, is_refunded in rows
+    ]
 
 
 @app.get("/refund-proposals", response_model=list[ProposalOut])
 def list_proposals(session: Session = Depends(get_session)):
-    return session.scalars(
-        select(RefundProposal).join(Payment).join(Invoice)
+    rows = session.execute(
+        select(RefundProposal, Payment).join(Payment).join(Invoice)
         .where(Invoice.customer_id == DEMO_CUSTOMER_ID)
         .order_by(RefundProposal.created_at, RefundProposal.id)
     ).all()
+    return [proposal_output(proposal, payment) for proposal, payment in rows]
 
 
 @app.get("/refunds", response_model=list[RefundOut])
@@ -131,7 +153,7 @@ def create_proposal(body: ProposalCreate, session: Session = Depends(get_session
     proposal = RefundProposal(payment_id=payment.id, status="pending")
     session.add(proposal)
     session.commit()
-    return proposal
+    return proposal_output(proposal, payment)
 
 
 @app.post("/refund-proposals/{proposal_id}/approve", response_model=RefundOut)

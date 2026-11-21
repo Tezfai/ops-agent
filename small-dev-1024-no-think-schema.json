@@ -1,0 +1,331 @@
+{
+  "benchmark_version": "refund-agent-v1.0",
+  "split": "development",
+  "model": "qwen3:4b",
+  "adapter_settings": {
+    "adapter": "openai-compatible-chat-completions",
+    "model_revision": "359d7dd4bcda",
+    "endpoint_scope": "loopback",
+    "max_tokens": 1024,
+    "max_retries": 0,
+    "timeout_seconds": 30,
+    "response_format": "JSON schema after tool result",
+    "prompt_differences": "none",
+    "reasoning_effort": "none"
+  },
+  "agent_configuration_sha256": "39283efb3c37270cecb6484a5c8eb4d6ef275dc92957f9976722d5f7dcb32a43",
+  "mock": false,
+  "cases": [
+    {
+      "case": "dup_cad_29",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 15279.2,
+      "model_calls": 2,
+      "input_tokens": 993,
+      "output_tokens": 918,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "dup_cad_small",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 6316.3,
+      "model_calls": 2,
+      "input_tokens": 996,
+      "output_tokens": 426,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "dup_usd",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 8083.8,
+      "model_calls": 2,
+      "input_tokens": 1000,
+      "output_tokens": 526,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "dup_cad_large",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 16682.4,
+      "model_calls": 2,
+      "input_tokens": 996,
+      "output_tokens": 919,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "dup_eur",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 13324.9,
+      "model_calls": 2,
+      "input_tokens": 1310,
+      "output_tokens": 772,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments",
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "different_invoices_cad",
+      "family": "separate_invoices",
+      "status": "pass",
+      "failures": [],
+      "latency_ms": 13854.4,
+      "model_calls": 2,
+      "input_tokens": 995,
+      "output_tokens": 731,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "different_invoices_usd",
+      "family": "separate_invoices",
+      "status": "pass",
+      "failures": [],
+      "latency_ms": 10288.2,
+      "model_calls": 2,
+      "input_tokens": 991,
+      "output_tokens": 585,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "failed_then_success",
+      "family": "failed_retry",
+      "status": "fail",
+      "failures": [
+        "Expected decision no_refund."
+      ],
+      "latency_ms": 14340.5,
+      "model_calls": 2,
+      "input_tokens": 1000,
+      "output_tokens": 773,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected decision no_refund."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "already_refunded_cad",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=1024, prompt_tokens=345, completion_tokens=1024, has_text=True, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 17570.5,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=1024, prompt_tokens=345, completion_tokens=1024, has_text=True, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    },
+    {
+      "case": "already_refunded_usd",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 11137.9,
+      "model_calls": 1,
+      "input_tokens": 340,
+      "output_tokens": 727,
+      "failure_categories": {
+        "decision_format": [
+          "Final decision is not a valid JSON decision object."
+        ],
+        "tool": [],
+        "business_outcome": [],
+        "model": []
+      },
+      "tools_used": [],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "already_refunded_eur",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Expected decision no_refund."
+      ],
+      "latency_ms": 13384.4,
+      "model_calls": 2,
+      "input_tokens": 992,
+      "output_tokens": 786,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected decision no_refund."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    },
+    {
+      "case": "already_refunded_large",
+      "family": "prior_refund",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=1024, prompt_tokens=343, completion_tokens=1024, has_text=True, has_tool_calls=False).",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 17064.1,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete (finish_reason=length, max_tokens=1024, prompt_tokens=343, completion_tokens=1024, has_text=True, has_tool_calls=False).",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    }
+  ],
+  "passed": 2,
+  "total": 12
+}

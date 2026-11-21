@@ -1,0 +1,11 @@
+{
+  "base_config": "pilot_config.json",
+  "quantization": "nf4",
+  "double_quant": true,
+  "compute_dtype": "float16",
+  "microbatch_size": 1,
+  "gradient_accumulation_steps": 4,
+  "effective_batch_size": 4,
+  "gradient_checkpointing": true,
+  "optimizer": "paged_adamw_8bit"
+}

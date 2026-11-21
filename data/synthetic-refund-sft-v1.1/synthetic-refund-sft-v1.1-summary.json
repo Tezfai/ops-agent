@@ -1,0 +1,38 @@
+{
+  "dataset_version": "synthetic-refund-sft-v1.1",
+  "seed": 20261121,
+  "accepted": {
+    "train": 20,
+    "validation": 20
+  },
+  "rejections": [],
+  "audit": {
+    "counts": {
+      "train": {
+        "families": {
+          "eligible_duplicate": 5,
+          "separate_invoices": 5,
+          "failed_retry": 5,
+          "already_refunded": 5
+        },
+        "decisions": {
+          "propose": 5,
+          "no_refund": 15
+        }
+      },
+      "validation": {
+        "families": {
+          "eligible_duplicate": 5,
+          "separate_invoices": 5,
+          "failed_retry": 5,
+          "already_refunded": 5
+        },
+        "decisions": {
+          "propose": 5,
+          "no_refund": 15
+        }
+      }
+    },
+    "normalized_cross_split_copies": 0
+  }
+}

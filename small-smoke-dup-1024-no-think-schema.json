@@ -1,0 +1,51 @@
+{
+  "benchmark_version": "refund-agent-v1.0",
+  "split": "development",
+  "model": "qwen3:4b",
+  "adapter_settings": {
+    "adapter": "openai-compatible-chat-completions",
+    "model_revision": "359d7dd4bcda",
+    "endpoint_scope": "loopback",
+    "max_tokens": 1024,
+    "max_retries": 0,
+    "timeout_seconds": 30,
+    "response_format": "JSON schema after tool result",
+    "prompt_differences": "none",
+    "reasoning_effort": "none"
+  },
+  "agent_configuration_sha256": "39283efb3c37270cecb6484a5c8eb4d6ef275dc92957f9976722d5f7dcb32a43",
+  "mock": false,
+  "cases": [
+    {
+      "case": "dup_cad_29",
+      "family": "basic_duplicate",
+      "status": "fail",
+      "failures": [
+        "Expected exactly one pending proposal for the specified payment.",
+        "Agent did not return exactly one confirmed proposal."
+      ],
+      "latency_ms": 15463.4,
+      "model_calls": 2,
+      "input_tokens": 993,
+      "output_tokens": 565,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [
+          "Expected exactly one pending proposal for the specified payment.",
+          "Agent did not return exactly one confirmed proposal."
+        ],
+        "model": []
+      },
+      "tools_used": [
+        "list_payments"
+      ],
+      "reported_models": [
+        "qwen3:4b"
+      ]
+    }
+  ],
+  "passed": 0,
+  "total": 1,
+  "list_payments_smoke_passed": false
+}

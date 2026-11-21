@@ -1,0 +1,27 @@
+{
+  "dataset_version": "synthetic-refund-sft-v1.0",
+  "seed": 20261121,
+  "split_counts": {
+    "train": 20,
+    "validation": 20
+  },
+  "families": {
+    "eligible_duplicate": {
+      "accepted": 10,
+      "rejected": 0
+    },
+    "separate_invoices": {
+      "accepted": 10,
+      "rejected": 0
+    },
+    "failed_retry": {
+      "accepted": 10,
+      "rejected": 0
+    },
+    "already_refunded": {
+      "accepted": 10,
+      "rejected": 0
+    }
+  },
+  "rejections": []
+}

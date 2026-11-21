@@ -1,0 +1,18 @@
+{
+  "checkpoint": "Qwen/Qwen3-4B",
+  "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "train_sha256": "ca35fde09cd5d0298e7e449b04a68437962f342775a3a4ed525abb9b45a53b27",
+  "validation_sha256": "e3f2f53f9f270f5d4c8b0500090e394e91c7d3e63d3562e3fa245a07f62cc927",
+  "seed": 20261121,
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "lora_targets": ["q_proj", "k_proj", "v_proj", "o_proj"],
+  "epochs": 3,
+  "learning_rate": 0.0002,
+  "gradient_accumulation_steps": 4,
+  "max_sequence_tokens": 4096,
+  "max_new_tokens": 1024,
+  "precision": "bfloat16",
+  "do_sample": false
+}

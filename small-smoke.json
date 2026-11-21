@@ -1,0 +1,46 @@
+{
+  "benchmark_version": "refund-agent-v1.0",
+  "split": "development",
+  "model": "qwen3:4b",
+  "adapter_settings": {
+    "adapter": "openai-compatible-chat-completions",
+    "model_revision": "359d7dd4bcda",
+    "endpoint_scope": "loopback",
+    "max_tokens": 500,
+    "max_retries": 0,
+    "timeout_seconds": 30,
+    "response_format": "prompt-only JSON",
+    "prompt_differences": "none"
+  },
+  "agent_configuration_sha256": "39283efb3c37270cecb6484a5c8eb4d6ef275dc92957f9976722d5f7dcb32a43",
+  "mock": false,
+  "cases": [
+    {
+      "case": "different_invoices_cad",
+      "family": "separate_invoices",
+      "status": "fail",
+      "failures": [
+        "Agent error: Local model response was incomplete.",
+        "Final decision is not a valid JSON decision object."
+      ],
+      "latency_ms": 8838.3,
+      "model_calls": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "failure_categories": {
+        "decision_format": [],
+        "tool": [],
+        "business_outcome": [],
+        "model": [
+          "Agent error: Local model response was incomplete.",
+          "Final decision is not a valid JSON decision object."
+        ]
+      },
+      "tools_used": [],
+      "reported_models": []
+    }
+  ],
+  "passed": 0,
+  "total": 1,
+  "list_payments_smoke_passed": false
+}

@@ -2,6 +2,9 @@
 .env.*
 !.env.example
 .venv/
+.venv-sft/
+.venv-qlora/
+pilot-runs/
 __pycache__/
 *.py[cod]
 *.egg-info/
