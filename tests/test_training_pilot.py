@@ -1,4 +1,5 @@
 import json
+import subprocess
 import sys
 import uuid
 from types import SimpleNamespace
@@ -72,9 +73,19 @@ def test_padding_is_never_supervised():
 
 
 def test_fixture_helpers_do_not_import_benchmark_modules():
-    from scripts.generate_sft_v11 import scenarios
-    assert len(scenarios(1)) == 40
-    assert not any(name == "benchmarks" or name.startswith("benchmarks.") for name in sys.modules)
+    code = (
+        "import sys\n"
+        "from scripts.generate_sft_v11 import scenarios\n"
+        "print(len(scenarios(1)))\n"
+        "print(any(name == 'benchmarks' or name.startswith('benchmarks.') for name in sys.modules))\n"
+    )
+    result = subprocess.run(
+        [sys.executable, "-c", code],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert result.stdout.splitlines() == ["40", "False"]
 
 
 def test_grade_checks_persisted_target_and_no_new_refunds():
